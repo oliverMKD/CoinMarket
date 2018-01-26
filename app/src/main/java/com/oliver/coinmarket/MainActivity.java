@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     public ArrayList<CoinMarket> favorites;
     Context context;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,14 +46,23 @@ public class MainActivity extends AppCompatActivity {
         context = this;
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-//        model = new CoinModel();
+
 
 
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new GridLayoutManager(context,1));
 
         model = SharedPrefferences.getFavorites(this);
-        adapter = new RV_Adapter(model.favorites,context);
+        adapter = new RV_Adapter(model.favorites, context, new OnClick() {
+            @Override
+            public void onRowClick(CoinMarket market, int position) {
+                market = model.favorites.get(position);
+                Intent intent = new Intent(MainActivity.this, Details.class);
+                intent.putExtra("details", market.getId());
+                startActivity(intent);
+
+            }
+        });
         mRecyclerView.setAdapter(adapter);
 
         fab.setOnClickListener(new View.OnClickListener() {
@@ -86,5 +96,23 @@ public class MainActivity extends AppCompatActivity {
 //            adapter.notifyDataSetChanged();
         }
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_settings) {
+            Intent intent2 = new Intent(this,Settings.class);
+            startActivity(intent2);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 
 }

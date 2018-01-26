@@ -10,5 +10,5 @@ import java.util.ArrayList;
  */
 
 public interface OnClick {
-    public void onRowClick( ArrayList<CoinMarket> favorites, int position );
+    public void onRowClick(CoinMarket favorites, int position );
 }

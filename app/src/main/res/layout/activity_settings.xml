@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.oliver.coinmarket.Settings">
+
+   <SeekBar
+       android:id="@+id/seek1"
+       android:layout_width="300dp"
+       android:layout_height="50dp" />
+    <Button
+        android:text="GO"
+        android:id="@+id/kopce"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_toRightOf="@+id/seek1"/>
+
+
+    <TextView
+        android:id="@+id/limit"
+        android:layout_width="290dp"
+        android:layout_height="50dp"
+        android:text="Limit"
+        android:layout_below="@+id/seek1"/>
+    <Button
+        android:text="GO"
+        android:id="@+id/kopce1"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_toRightOf="@+id/limit"
+        android:layout_below="@+id/kopce"/>
+
+</RelativeLayout>

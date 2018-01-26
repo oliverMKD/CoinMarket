@@ -54,7 +54,9 @@ public class Main2Activity extends AppCompatActivity {
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new GridLayoutManager(context,1));
 
-        Call<ArrayList<CoinMarket>> call = api.getCoins();
+        int limit = SharedPrefferences.getLimit(context);
+
+        Call<ArrayList<CoinMarket>> call = api.getCoins(limit);
         call.enqueue(new Callback<ArrayList<CoinMarket>>() {
             @Override
             public void onResponse(Call<ArrayList<CoinMarket>> call, Response<ArrayList<CoinMarket>> response) {

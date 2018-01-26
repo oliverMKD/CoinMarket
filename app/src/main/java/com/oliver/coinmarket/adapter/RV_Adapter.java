@@ -29,16 +29,18 @@ import butterknife.ButterKnife;
 
 public class RV_Adapter extends RecyclerView.Adapter<RV_Adapter.ViewHolder> {
     OnClick onClick;
-    ArrayList<CoinMarket> favorites = new ArrayList<>();
+    ArrayList<CoinMarket> favorites ;
+    CoinMarket coinMarket;
     Context context1;
     public void setItems(ArrayList<CoinMarket> results) {
         favorites = results;
         notifyDataSetChanged();
     }
 
-    public RV_Adapter(ArrayList<CoinMarket> favorites, Context context) {
+    public RV_Adapter(ArrayList<CoinMarket> favorites, Context context,OnClick onClick) {
         this.favorites = favorites;
         this.context1 = context;
+        this.onClick = onClick;
     }
 
 
@@ -61,7 +63,12 @@ public class RV_Adapter extends RecyclerView.Adapter<RV_Adapter.ViewHolder> {
         holder.rank.setText("Rank :" + results.getRank());
         Picasso.with(context1).load("https://files.coinmarketcap.com/static/img/coins/64x64/"+ results.getId()+".png").fit().into(holder.slika);
 
-
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClick.onRowClick(coinMarket,position);
+            }
+        });
     }
 
     @Override

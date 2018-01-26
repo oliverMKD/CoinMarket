@@ -41,7 +41,14 @@ public class RestApi {
     public ApiService request(){
         return getRetrofitInstance().create(ApiService.class);
     }
-    public Call<ArrayList<CoinMarket>> getCoins(){
-        return request().getCoins();
+    public Call<ArrayList<CoinMarket>> getCoins(int limit){
+        return request().getCoins(limit);
     }
+    public  Call<ArrayList<CoinMarket>> getBtc( String btc)
+    {return  request().getBtc(btc);}
+
+//    public Call<ArrayList<CoinMarket>> getLimit(){
+//        return request().getLimit("convert",50);
+//    }
+
 }
