@@ -138,5 +138,6 @@ public class MainActivity extends AppCompatActivity {
     }
     public void handleFirebaseNotification(String notification, String notificationBody){
         Toast.makeText(this, notification+"-//-"+notificationBody, Toast.LENGTH_SHORT).show();
+
     }
 }
