@@ -85,18 +85,6 @@ public class Main2Activity extends AppCompatActivity {
                     }
                 });
 
-//            mAdapter =  new RecyclerAdapter(favorites, context,onClick) {
-//            @Override
-//            public void onClick(CoinModel model, int position) {
-//                Intent intent;
-//                intent = new Intent(Main2Activity.this,MainActivity.class);
-//                intent.putExtra("novoextra",favorites);
-//                setResult(RESULT_OK,intent);
-//                finish();
-//
-//            }
-//        });
-
     }
 
     @Override

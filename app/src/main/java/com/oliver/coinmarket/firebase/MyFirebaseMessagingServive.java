@@ -15,7 +15,9 @@ public class MyFirebaseMessagingServive extends FirebaseMessagingService {
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
-        String notificationText = "AAAEEEUUU";
+        String notificationText = "";
+        if (remoteMessage.getData().containsKey("vesti"))
+            notificationText = remoteMessage.getData().get("vesti");
 
         String notificationBody = "";
         if (remoteMessage.getNotification()!=null)
