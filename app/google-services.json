@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "843393018645",
+    "firebase_url": "https://coinmarket-70a27.firebaseio.com",
+    "project_id": "coinmarket-70a27",
+    "storage_bucket": "coinmarket-70a27.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:843393018645:android:83488c4c0d2a0179",
+        "android_client_info": {
+          "package_name": "com.oliver.coinmarket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "843393018645-anjf5usfmiralm9j9sindk92bof0oakr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZXBT8tl8tCid85da2D3Qaj8FuCyZNGmI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

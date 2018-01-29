@@ -1,7 +1,9 @@
 package com.oliver.coinmarket;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     public CoinModel model;
     public ArrayList<CoinMarket> favorites;
     Context context;
+    BroadcastReceiver mReceiver;
 
 
     @Override
@@ -114,5 +117,26 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        IntentFilter intentFilter = new IntentFilter("android.intent.action.FIREBASENOTIF");
+        mReceiver = new BroadcastReceiver(){
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                try {
+                    String msg_for_me = intent.getStringExtra("notification");
+                    String notificationBody = intent.getStringExtra("notificationbody");
+                    if (msg_for_me!=null&&!msg_for_me.equals(""))
+                        handleFirebaseNotification(msg_for_me,notificationBody);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        };
+        registerReceiver(mReceiver,intentFilter);
+    }
+    public void handleFirebaseNotification(String notification, String notificationBody){
+        Toast.makeText(this, notification+"-//-"+notificationBody, Toast.LENGTH_SHORT).show();
+    }
 }
